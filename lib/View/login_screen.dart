@@ -39,83 +39,87 @@ class LoginScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Color.fromARGB(255, 255, 255, 255),
                       borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('Faça seu login abaixo:'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.message_rounded,
-                              color: Colors.black,
-                            ),
-                            hintText: 'Coloque seu e-mail aqui',
-                            hintStyle: TextStyle(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('Faça seu login abaixo:'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.message_rounded,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(15.0)), // Borda arredondada
-                              borderSide: BorderSide(
-                                color: Colors.black, // Cor branca
-                                width: 1.0,
+                              ),
+                              hintText: 'Coloque seu e-mail aqui',
+                              hintStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(15.0)), // Borda arredondada
+                                borderSide: BorderSide(
+                                  color: Colors.black, // Cor branca
+                                  width: 1.0,
+                                ),
                               ),
                             ),
+                            style:
+                                TextStyle(color: Colors.black), // Cor do texto
                           ),
-                          style: TextStyle(color: Colors.black), // Cor do texto
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                            ),
-                            hintText: 'Coloque sua senha aqui',
-                            hintStyle: TextStyle(
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: _passwordController,
+                            decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.lock,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w300),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(15.0)), // Borda arredondada
-                              borderSide: BorderSide(
-                                color: Colors.black, // Cor branca
-                                width: 1.0,
+                              ),
+                              hintText: 'Coloque sua senha aqui',
+                              hintStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(15.0)), // Borda arredondada
+                                borderSide: BorderSide(
+                                  color: Colors.black, // Cor branca
+                                  width: 1.0,
+                                ),
                               ),
                             ),
+                            style:
+                                TextStyle(color: Colors.black), // Cor do texto
                           ),
-                          style: TextStyle(color: Colors.black), // Cor do texto
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 43, 75, 26),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/pieChart');
-                                login(_emailController.text,
-                                    _passwordController.text);
-                              },
-                              child: Text(
-                                'Login',
-                                style: TextStyle(color: Colors.white),
-                              )),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 43, 75, 26),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/pieChart');
+                                  login(_emailController.text,
+                                      _passwordController.text);
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
