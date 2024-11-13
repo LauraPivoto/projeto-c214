@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:Fintrack/Model/user.dart';
+import 'package:Fintrack/services/userServices.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -8,7 +10,13 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void register(String name, String email, String password) {}
+  void register(String name, String email, String password) {
+    User user = new User(name: name, email: email, password: password);
+
+    UserService userService = UserService();
+
+    userService.registerUser(user);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +51,7 @@ class RegisterPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'XicoCoin',
+                          'FinTrack',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
@@ -134,7 +142,9 @@ class RegisterPage extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                register(_nameController.text, _emailController.text, _passwordController.text)
+                              },
                               child: Text(
                                 'Cadastrar',
                                 style: TextStyle(color: Colors.white),
