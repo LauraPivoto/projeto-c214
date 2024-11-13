@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:Fintrack/Model/user.dart';
+import 'package:Fintrack/View/Components/success_popup.dart';
 import 'package:Fintrack/services/userServices.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +11,20 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void register(String name, String email, String password) {
-    User user = new User(name: name, email: email, password: password);
-
+  void register(
+      BuildContext context, String name, String email, String password) {
+    User user = User(name: name, email: email, password: password);
     UserService userService = UserService();
 
-    userService.registerUser(user);
+    try {
+      userService.registerUser(user);
+      // Exibe a mensagem de sucesso após o cadastro
+      CustomSnackbar.showSuccessMessage(
+          context, 'Registro realizado com sucesso');
+    } catch (error) {
+      // Se houver erro, exibe outra mensagem
+      CustomSnackbar.showSuccessMessage(context, 'Erro ao realizar o cadastro');
+    }
   }
 
   @override
@@ -143,7 +152,11 @@ class RegisterPage extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10))),
                           child: TextButton(
                               onPressed: () {
-                                register(_nameController.text, _emailController.text, _passwordController.text)
+                                register(
+                                    context,
+                                    _nameController.text,
+                                    _emailController.text,
+                                    _passwordController.text);
                               },
                               child: Text(
                                 'Cadastrar',
@@ -166,10 +179,7 @@ class RegisterPage extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: TextButton(
-                      onPressed: () {
-                        register(_nameController.text, _emailController.text,
-                            _passwordController.text);
-                      },
+                      onPressed: () {},
                       child: Text(
                         'Fazer login',
                         style:
