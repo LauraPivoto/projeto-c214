@@ -152,11 +152,7 @@ class RegisterPage extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10))),
                           child: TextButton(
                               onPressed: () {
-                                register(
-                                    context,
-                                    _nameController.text,
-                                    _emailController.text,
-                                    _passwordController.text);
+                                Navigator.pushNamed(context, '/login');
                               },
                               child: Text(
                                 'Cadastrar',
